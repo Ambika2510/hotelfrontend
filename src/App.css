@@ -1,38 +1,92 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body {
+    background-color: #696767;
+}
+
+.carousel-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-items {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.carousel-button {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.prev-button {
+    margin-left: 1rem;
+}
+
+.next-button {
+    margin-right: 1rem;
 }
