@@ -2,6 +2,8 @@ import './App.css';
 import{BrowserRouter,Routes, Route} from 'react-router-dom';
 import Home from './Screens/HomeScreen';
 import Bookingscreen from './Screens/Bookingscreen';
+import Signup from './Screens/Signup';
+import Login from './Screens/Login';
 function App() {
     return ( 
         <BrowserRouter>
@@ -9,6 +11,8 @@ function App() {
        <Routes>
        <Route path="/" element={<Home/>} />
    <Route path="/bookingroom/:id" element={<Bookingscreen/>} />
+   <Route path="/register" element={<Signup/>} />
+   <Route path="/login" element={<Login/>} />
          </Routes>
         </div>
         </BrowserRouter>
