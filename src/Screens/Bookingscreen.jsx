@@ -1,9 +1,16 @@
 import React,{useState,useEffect} from 'react'
+import moment from 'moment';
 import { useParams } from 'react-router-dom'
 import Navbar from '../Components/Navbar'
 import axios from 'axios';
+
+
 const Bookingscreen = () => {
     const id = useParams().id;
+    const fromdate=useParams().fromdate;
+    const todate=useParams().todate;
+    const totaldays=moment(todate,"DD-MM-YYYY").diff(moment(fromdate,"DD-MM-YYYY"),'days')+1;
+    
     const [hotel, sethotel] = useState({});
     useEffect(() => {
         axios.get(`http://localhost:3700/api/getroomdetail/${id}`)
@@ -28,12 +35,12 @@ const Bookingscreen = () => {
     <div className="flex flex-col justify-between p-4 mr-6 ml-6 leading-normal">
     <h5 className=" mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Booking details:</h5>
     <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Name:{hotel.maxcount}</h2>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">From:{hotel.phonenumber}</h2>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">To:{hotel.type}</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">From:{fromdate}</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">To:{todate}</h2>
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">MAX COUNT:{hotel.maxcount}</h2>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Total days:{hotel.maxcount}</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Total days:{totaldays}</h2>
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Rent per day:{hotel.rentperday}</h2>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Total Amount:{hotel.rentperday}</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Total Amount:{hotel.rentperday*totaldays}</h2>
        
         <button   type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">Pay</button>
         

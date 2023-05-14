@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Carousel from './Carousel';
 import {Link} from 'react-router-dom';
-const Front = ({hotel}) => {
+const Front = ({hotel,fromdate,todate}) => {
     const [show, setShow] = useState(0);
 
     const handleClose = () => setShow(0);
@@ -26,7 +26,7 @@ const Front = ({hotel}) => {
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Type:{hotel.type}</h2>
         <div className='flex flex-row-reverse'>
         <button  onClick={handleShow} type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">View details</button>
-        <Link to={"/bookingroom/"+hotel._id}><button   type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">Book</button>
+        <Link to={"/bookingroom/"+hotel._id+"/"+fromdate+"/"+todate}><button   type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">Book</button>
         </Link>
         </div>
        
