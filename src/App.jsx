@@ -4,6 +4,8 @@ import Home from './Screens/HomeScreen';
 import Bookingscreen from './Screens/Bookingscreen';
 import Signup from './Screens/Signup';
 import Login from './Screens/Login';
+import Profile from './Screens/Profile';
+import Userbooking from './Screens/Userbooking';
 function App() {
     return ( 
         <BrowserRouter>
@@ -13,6 +15,8 @@ function App() {
    <Route path="/bookingroom/:id/:fromdate/:todate" element={<Bookingscreen/>} />
    <Route path="/register" element={<Signup/>} />
    <Route path="/login" element={<Login/>} />
+   <Route path="/profile/:id" element={<Profile/>} />
+   <Route path="/booking/:id" element={<Userbooking/>} />
          </Routes>
         </div>
         </BrowserRouter>

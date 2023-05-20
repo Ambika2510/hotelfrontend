@@ -59,7 +59,7 @@ const HomeScreen = () => {
       <div className='  flex justify-center m-3 p-2'>
 <div className=' flex justify-center border-2 border-solid border-black   '>  <RangePicker format='DD-MM-YYYY' className='p-2'  onChange={filterbydate} /></div>
 <div>
-            <input type="text" id="first_name" className="bg-gray-50 mx-4 border-2 border-solid border-black  text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search rooms" value={search} onChange={(e)=>{setsearch(e.target.value)}} onKeyUp={filterBysearch} required/>
+            <input type="text" id="first_name" className="bg-gray-50 mx-4 border-2 border-solid border-black  text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search hotels" value={search} onChange={(e)=>{setsearch(e.target.value)}} onKeyUp={filterBysearch} required/>
         </div>
         <div className='mx-4'>
           <select className='"bg-gray-50 mx-4  border-2 border-solid border-black  text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' value={type} onChange={(e)=>{filterbytype(e.target.value)}}>

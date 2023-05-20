@@ -12,6 +12,7 @@ const Login = () => {
    
     axios.post('http://localhost:3700/api/login', signup)
         .then(res => {
+          localStorage.setItem("user", JSON.stringify(res.data))
             setEmail('')
             setPassword('')
             window.location.href="/";

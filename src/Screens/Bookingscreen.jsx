@@ -8,7 +8,12 @@ import DropIn from 'braintree-web-drop-in-react';
 
 
 const Bookingscreen = () => {
+  if(!localStorage.getItem("user")){
+    window.location.href="/login"
+  }
     const id = useParams().id;
+    const data=JSON.parse(localStorage.getItem("user"))
+    const uid=data.id
     const fromdate=useParams().fromdate;
     const todate=useParams().todate;
     const totaldays=moment(todate,"DD-MM-YYYY").diff(moment(fromdate,"DD-MM-YYYY"),'days')+1;
@@ -42,7 +47,7 @@ setclientToken(res.data.clientToken)
             const { nonce } = await instance.requestPaymentMethod();
             const bookingdata={
               room:hotel,
-              userid:"SON.parse(localStorage.getItem('currentuser'))._id",
+              userid:uid,
               fromdate:fromdate,
               todate:todate,
               totalamount:hotel.rentperday*totaldays,
@@ -52,7 +57,7 @@ setclientToken(res.data.clientToken)
             } 
           const res=await axios.post("http://localhost:3700/api/bookroom",bookingdata)
         axios.patch(`http://localhost:3700/api/updateroom/${id}`).then((res)=>{
-          console.log(res.data);})
+          window.location.href="/"})
           }
           catch(err){
             console.log(err);

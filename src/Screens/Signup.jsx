@@ -12,6 +12,7 @@ const Signup = () => {
     axios.post('http://localhost:3700/api/signup', signup)
         .then((res )=> {
             if(res.status===200){
+              localStorage.setItem("user", JSON.stringify(res.data))
                  setName("");
                 setEmail("");
                 setPassword("");
