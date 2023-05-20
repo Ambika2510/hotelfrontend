@@ -9,6 +9,8 @@
     "antd": "^5.4.7",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
+    "braintree-react": "^3.3.0",
+    "braintree-web-drop-in-react": "^1.2.1",
     "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.4",
     "moment": "^2.29.4",
@@ -17,6 +19,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
+    "react-stripe-checkout": "^2.6.3",
     "react-toastify": "^9.1.2",
     "web-vitals": "^2.1.4"
   },

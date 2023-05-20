@@ -7,6 +7,7 @@ import moment from 'moment';
 const { RangePicker } = DatePicker;
 const HomeScreen = () => {
     const [hotels, sethotels] = useState([]);
+    const [duplicatehotels, setduplicatehotels] = useState([]);
     const [fromdate, setfromdate] = useState('undefined');
     const [todate, settodate] = useState('undefined');
     useEffect(() => {
@@ -14,12 +15,27 @@ const HomeScreen = () => {
       .then((res)=>{
         
         sethotels(res.data)
+        setduplicatehotels(res.data)
       });
-    }, [])
+    },[])
    const filterbydate=(dates)=>{
-      setfromdate(moment(dates[0].$d).format('DD-MM-YYYY'));
-    settodate(moment(dates[1].$d).format('DD-MM-YYYY'));
-  console.log(fromdate,todate)
+      
+    const s=moment(dates[0].$d).format('DD-MM-YYYY');
+    const e=moment(dates[1].$d).format('DD-MM-YYYY')
+    setfromdate(s);
+    settodate(e);
+            console.log(s,e);
+  
+ let temphotel=[];
+ for(const room of duplicatehotels){
+  if(room.maxcount!==0){
+         temphotel.push(room);
+  }
+ }
+ sethotels(temphotel);
+  
+
+
     }
   return (
     <div>

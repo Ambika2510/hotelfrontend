@@ -21,12 +21,12 @@ const Front = ({hotel,fromdate,todate}) => {
     <img className="object-cover w-full m-3 rounded-t-lg h-96 md:h-auto md:w-96 md:rounded-none md:rounded-l-lg" src={url} alt=""/>
     <div className="flex flex-col justify-between p-4 mr-6 ml-4 leading-normal">
         <h5 className="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{hotel.name}</h5>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">MAX COUNT:{hotel.maxcount}</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Number of Room available:{" "+hotel.maxcount}</h2>
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Phone number:{hotel.phonenumber}</h2>
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Type:{hotel.type}</h2>
         <div className='flex flex-row-reverse'>
         <button  onClick={handleShow} type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">View details</button>
-        <Link to={"/bookingroom/"+hotel._id+"/"+fromdate+"/"+todate}><button   type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">Book</button>
+        <Link to={fromdate==="undefined"||todate==="undefined"?"/":"/bookingroom/"+hotel._id+"/"+fromdate+"/"+todate}><button   type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">Book</button>
         </Link>
         </div>
        
