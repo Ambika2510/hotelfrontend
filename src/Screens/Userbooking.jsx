@@ -18,7 +18,7 @@ const Userbooking = () => {
     <div>
         <Navbar/>
         {bookings.length===0?<h1 className='text-center text-5xl font-bold m-8'>No Bookings!!!</h1>:
-        <div className='m-3 flex justify-center '><div>{bookings.map((hotel)=> (<Bookinguser key={hotel._id} hotelid={hotel._id} hotel={hotel.room} fromdate={hotel.fromdate} todate={hotel.todate} amount={hotel.totalamount} transactionid={hotel.transactionid} status={hotel.status}/>))}</div></div>
+        <div className='m-3 flex justify-center '><div className='min-w-[40%]'>{bookings.map((hotel)=> (<Bookinguser key={hotel._id} bookingid={hotel._id} hotel={hotel.room} fromdate={hotel.fromdate} todate={hotel.todate} amount={hotel.totalamount} transactionid={hotel.transactionid} status={hotel.status}/>))}</div></div>
          }
 
     </div>
