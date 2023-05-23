@@ -3,7 +3,8 @@ import axios from 'axios'
 import Navbar from '../Components/Navbar';
 import Booking from '../Components/Booking';
 import Hotel from '../Components/Hotel';
-import User from '../Components/User'
+import User from '../Components/User';
+import Addhotel from'../Components/Addhotel';
 import { Tabs } from 'antd'
     const {TabPane}=Tabs;
 
@@ -103,8 +104,8 @@ axios.get("http://localhost:3700/api/getalluser").then((res)=>{
             </thead>{users.map((user)=> (<User key={user._id} userid={user._id} name={user.name} email={user.email} admin={user.isadmin}  />))}  </table>
     </div>:<h1 className="m-6 text-center text-lg font-semibold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">!!No User Registered...</h1>}
         </TabPane>
-        <TabPane tab="Add Room" key="4">
-
+        <TabPane tab="Add Hotel" key="4">
+                  <Addhotel/>
         </TabPane>
 
     </Tabs>
