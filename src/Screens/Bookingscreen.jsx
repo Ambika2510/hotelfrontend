@@ -19,6 +19,7 @@ const Bookingscreen = () => {
     const totaldays=moment(todate,"DD-MM-YYYY").diff(moment(fromdate,"DD-MM-YYYY"),'days')+1;
     const [clientToken, setclientToken] = useState("");
     const[instance,setInstance]=useState("");
+
     // const [loading, setloading] = useState(false);
     const [hotel, sethotel] = useState({});
     useEffect(() => {
@@ -28,8 +29,8 @@ const Bookingscreen = () => {
         });
        gettoken()  
     }, [])
+  
     
-       const url="https://drive.google.com/uc?export=view&id=1bSatWMyb7EeyyHapkBmrV3ZYlTM4yiLt"
  
       const gettoken=async()=>{
         try{
@@ -71,7 +72,7 @@ setclientToken(res.data.clientToken)
     <div className="flex justify-center bg-white border border-gray-200  shadow md:flex-row md:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
     <div className='mr-7'>
         <h5 className=" m-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{hotel.name}</h5>
-        <img className="object-cover w-full m-3 rounded-t-lg h-96 md:h-auto md:w-96 md:rounded-none md:rounded-l-lg" src={url} alt=""/>
+        <img className="object-cover w-full m-3 rounded-t-lg h-96 md:h-auto md:w-96 md:rounded-none md:rounded-l-lg" src={Object.keys(hotel).length>0?hotel.imageurl[0]:""} alt=""/>
           </div> 
    
     <div className="flex flex-col justify-between p-4 mr-6 ml-6 leading-normal">

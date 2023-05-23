@@ -7,10 +7,10 @@ const Front = ({hotel,fromdate,todate}) => {
     const handleClose = () => setShow(0);
     const handleShow = () => setShow(1);
   
-    const url="https://drive.google.com/uc?export=view&id=1bSatWMyb7EeyyHapkBmrV3ZYlTM4yiLt";
+    const url=hotel.imageurl[0];
   
-    const url2="https://drive.google.com/uc?export=view&id=1VRJefKLsLPyzPN6Fjl4ZRVIGxhufWers";
-    const url3="https://drive.google.com/uc?export=view&id=1v7sTdsWwyeAnsrybIHLNYyoTZvQWqfJ_";
+    const url2=hotel.imageurl[1];
+    const url3=hotel.imageurl[2];
     const images=[url,url2,url3];
   return (
     <div className='m-1 border-2  border-gray-400'>

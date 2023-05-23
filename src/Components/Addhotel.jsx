@@ -1,6 +1,9 @@
 import React,{useRef}from 'react'
 import {useState} from 'react'
 import axios from 'axios'
+import {storage} from '../Firebase'
+import {ref,uploadBytes,getDownloadURL} from 'firebase/storage'
+import {v4} from "uuid"
 
 const Addhotel = () => {
     const [name,setname]=useState("");
@@ -20,6 +23,55 @@ const Addhotel = () => {
       
           return}
         else{
+          const imagerf1=ref(storage,`hotelimages/${filename1.name+v4()}`);
+          const imagerf2=ref(storage,`hotelimages/${filename2.name+v4()}`);
+          const imagerf3=ref(storage,`hotelimages/${filename3.name+v4()}`);
+          uploadBytes(imagerf1,filename1).then((snapshot)=>{
+            getDownloadURL(snapshot.ref).then((url1)=>{
+              uploadBytes(imagerf2,filename2).then((snapshot)=>{
+                getDownloadURL(snapshot.ref).then((url2)=>{
+                  uploadBytes(imagerf3,filename3).then((snapshot)=>{
+                    getDownloadURL(snapshot.ref).then((url3)=>{
+                      console.log(url1,url2,url3)
+                      const data={
+                        name,
+                        type,
+                        maxcount,
+                        phonenumber,
+                        rentperday,
+                        description,
+                        url1,
+                        url2,
+                        url3
+                      }
+                      axios.post("http://localhost:3700/api/createroom",data).then((res)=>{
+                        if(res.status===200){
+                          // toast.success("Sign in",{position:"top-center",autoClose:8000})
+                          // localStorage.setItem("user", JSON.stringify(res.data))
+                          setname("");
+                          settype("");
+                          setmaxcount("");
+                          setphonenumber("");
+                          setrentperday("");
+                          setdescription("");
+                          setfilename3(null);
+                          setfilename2(null);
+                          setfilename1(null);
+                          inputref.current.value = null;
+                          window.location.reload();
+                          console.log("hotel added successfully")
+                        }
+                    })
+                    .catch((err)=>{
+                        console.log(err.message)
+                 })
+                   })
+                   })
+               })
+               })
+           })
+           })
+
       }
     }
   return (
