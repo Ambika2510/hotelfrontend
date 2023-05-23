@@ -26,7 +26,7 @@ axios.get("http://localhost:3700/api/getalluser").then((res)=>{
     <div>
         <Navbar/>
         <div className='m-4'>
-        <h1 className='text-3xl  font-semibold text-center text-fuchsia-950'>Admin Panel</h1>
+        <h1 className='text-3xl  font-semibold text-center text-white'>Admin Panel</h1>
     <Tabs defaultActiveKey="1" className='text-white text-xl font-semibold' >
         <TabPane className='text-lg text-white' tab="Bookings" key="1" >
              { bookings.length>0?<div className="relative overflow-x-auto">

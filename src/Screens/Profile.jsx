@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import Navbar from '../Components/Navbar'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 const Profile = () => {
     const id = useParams().id;
@@ -19,9 +20,9 @@ const Profile = () => {
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Email:{" "+user.email}</h2>
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Admin:{user.isadmin?" "+"YES":" "+"NO"}</h2>
         
+      {user.isadmin?<Link to={"/admin"}><button   type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">Go to Admin Panel</button></Link>:<button   type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">Get Admin Access</button>}
+       
       
-        <button   type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">Get Admin Access</button>
-        
         </div>
         </div>
 
