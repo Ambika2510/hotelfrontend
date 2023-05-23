@@ -6,6 +6,7 @@ import Signup from './Screens/Signup';
 import Login from './Screens/Login';
 import Profile from './Screens/Profile';
 import Userbooking from './Screens/Userbooking';
+import Adminscreen from './Screens/Adminscreen';
 function App() {
     return ( 
         <BrowserRouter>
@@ -17,6 +18,7 @@ function App() {
    <Route path="/login" element={<Login/>} />
    <Route path="/profile/:id" element={<Profile/>} />
    <Route path="/booking/:id" element={<Userbooking/>} />
+   <Route path='/admin' element={<Adminscreen/>}/>
          </Routes>
         </div>
         </BrowserRouter>
