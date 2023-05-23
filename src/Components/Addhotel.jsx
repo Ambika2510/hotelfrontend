@@ -1,4 +1,6 @@
-import React,{useState,useEffect} from 'react'
+import React,{useRef}from 'react'
+import {useState} from 'react'
+import axios from 'axios'
 
 const Addhotel = () => {
     const [name,setname]=useState("");
@@ -7,14 +9,25 @@ const Addhotel = () => {
     const[phonenumber,setphonenumber]=useState("");
     const[rentperday,setrentperday]=useState("");
      const[description,setdescription]=useState("");
-     const [imageurl,setimageurl]=useState([]);
-
+     const [filename1,setfilename1]=useState(null);
+     const [filename2,setfilename2]=useState(null);
+     const [filename3,setfilename3]=useState(null);
+     const inputref=useRef(null);
+     const handlesubmit=async(e)=>{
+ 
+        e.preventDefault();
+        if(filename1===null||filename2===null||filename3===null){
+      
+          return}
+        else{
+      }
+    }
   return (
     <div>
         <div className="flex justify-center content-center">
     <div className=" p-6  m-8  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min-w-[50%]">
         
-<form >
+<form onSubmit={handlesubmit}>
   <div className="mb-6">
     <label for="text" className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Hotel Name</label>
     <input type="text" id="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="xyz" onChange={(e)=>setname(e.target.value)}value={name} required/>
@@ -42,21 +55,21 @@ const Addhotel = () => {
   <div className='grid md:grid-cols-3 md:gap-3'>
   <div className="mb-6">
   <label class="block mb-2 text-lg font-medium text-gray-900 dark:text-white" for="file_input">Upload image 1</label>
-<input class="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"  accept="image/png, image/jpg, image/jpeg" required/>
+<input class="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" onChange={(e)=>setfilename1(e.target.files[0])} ref={inputref} accept="image/png, image/jpg, image/jpeg" required/>
 <p class="mt-1 text-lg text-gray-500 dark:text-gray-300" id="file_input_help">Only support .png .jpg and .jpeg image file.</p>
 
 
   </div>
   <div className="mb-6">
   <label class="block mb-2 text-lg font-medium text-gray-900 dark:text-white" for="file_input">Upload image 2</label>
-<input class="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"  accept="image/png, image/jpg, image/jpeg" required/>
+<input class="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" onChange={(e)=>setfilename2(e.target.files[0])} ref={inputref} accept="image/png, image/jpg, image/jpeg" required/>
 <p class="mt-1 text-lg text-gray-500 dark:text-gray-300" id="file_input_help">Only support .png .jpg and .jpeg image file.</p>
 
 
   </div>
   <div className="mb-6">
   <label class="block mb-2 text-lg font-medium text-gray-900 dark:text-white" for="file_input">Upload image 3</label>
-<input class="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"  accept="image/png, image/jpg, image/jpeg" required/>
+<input class="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" onChange={(e)=>setfilename3(e.target.files[0])} ref={inputref} accept="image/png, image/jpg, image/jpeg" required/>
 <p class="mt-1 text-lg text-gray-500 dark:text-gray-300" id="file_input_help">Only support .png .jpg and .jpeg image file.</p>
 
 
@@ -69,6 +82,7 @@ const Addhotel = () => {
     </div>
     </div></div>
   )
-}
+  }
+
 
 export default Addhotel
