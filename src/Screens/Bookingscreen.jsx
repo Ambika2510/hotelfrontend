@@ -55,7 +55,7 @@ setclientToken(res.data.clientToken)
               todate:todate,
               totalamount:hotel.rentperday*totaldays,
               totaldays:totaldays,
-              transactionid:clientToken,
+              transactionid:"123445323",
               nonce
              
             } 
@@ -63,8 +63,9 @@ setclientToken(res.data.clientToken)
               headers: {
               'authorization': `Bearer ${data.token}`
           }}
+          const fcc={fcc:"fcc"}
           const res=await axios.post("http://localhost:3700/api/bookroom",bookingdata,config)
-        axios.patch(`http://localhost:3700/api/updateroom/${id}`,config).then((res)=>{
+        axios.patch(`http://localhost:3700/api/updateroom/${id}`,fcc,config).then((res)=>{
           window.location.href="/home"})
           }
           catch(err){

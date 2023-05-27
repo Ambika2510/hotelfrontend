@@ -12,7 +12,9 @@ const Bookinguser = ({bookingid,hotel, fromdate,todate,amount,transactionid,stat
       headers: {
       'authorization': `Bearer ${data.token}`
   }}
-    const res= await axios.patch("http://localhost:3700/api/updatebooking/"+bookingid,config);
+  const fcc={fcc:"true"}
+     
+    const res= await axios.patch("http://localhost:3700/api/updatebooking/"+bookingid,fcc,config);
     window.location.reload();
   }
   return (
