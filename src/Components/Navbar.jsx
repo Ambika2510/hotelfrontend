@@ -23,7 +23,7 @@ const Navbar = () => {
           
 const handleclick = () => {
   localStorage.removeItem('user')
-  window.location.href = '/home'
+  window.location.href = '/'
 }
 return(
   <nav className="bg-white border-gray-200 dark:bg-gray-900">
