@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Carousel from './Carousel';
 import {Link} from 'react-router-dom';
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 const Front = ({hotel,fromdate,todate}) => {
     const [show, setShow] = useState(0);
 
@@ -12,6 +14,14 @@ const Front = ({hotel,fromdate,todate}) => {
     const url2=hotel.imageurl[1];
     const url3=hotel.imageurl[2];
     const images=[url,url2,url3];
+    const handleclick=()=>{
+        if(fromdate==="undefined"||todate==="undefined"||!localStorage.getItem("user")){
+            toast.error("Please select both date and login to book hotel",{position:"top-center",autoClose:5000})
+        }
+        else{
+            return;
+        }
+    }
   return (
     <div className='m-1 border-2  border-gray-400'>
         
@@ -26,7 +36,7 @@ const Front = ({hotel,fromdate,todate}) => {
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Type:{hotel.type}</h2>
         <div className='flex flex-row-reverse'>
         <button  onClick={handleShow} type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">View details</button>
-        <Link to={fromdate==="undefined"||todate==="undefined"?"/":"/bookingroom/"+hotel._id+"/"+fromdate+"/"+todate}><button   type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">Book</button>
+        <Link to={fromdate==="undefined"||todate==="undefined"||!localStorage.getItem("user")?"/":"/bookingroom/"+hotel._id+"/"+fromdate+"/"+todate}><button  onClick={handleclick} type="button" className="text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center m-3">Book</button>
         </Link>
         </div>
        
@@ -51,7 +61,7 @@ const Front = ({hotel,fromdate,todate}) => {
  
 </div>
   
-
+<ToastContainer autoClose={10000}/>
     </div>
   )
 }

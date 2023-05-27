@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import axios from 'axios';
 import Navbar from '../Components/Navbar'
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 const Signup = () => {
     const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -12,6 +14,7 @@ const Signup = () => {
     axios.post('http://localhost:3700/api/signup', signup)
         .then((res )=> {
             if(res.status===200){
+              toast.success("!!Wait...Signup under process",{position:"top-center",autoClose:10000})
               localStorage.setItem("user", JSON.stringify(res.data))
                  setName("");
                 setEmail("");
@@ -22,7 +25,7 @@ const Signup = () => {
         })
         .catch(err => {  
           const error = err.response.data.error
-          console.log(error)
+          toast.error(error,{position:"top-center",autoClose:7000})
             
          })
 
@@ -51,6 +54,7 @@ const Signup = () => {
 </form>
 </div>
     </div>
+    <ToastContainer autoClose={10000}/>
     </div>
   )
 }

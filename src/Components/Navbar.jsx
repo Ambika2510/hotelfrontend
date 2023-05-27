@@ -8,8 +8,12 @@ const Navbar = () => {
   useEffect(() => {
     if(localStorage.getItem("user")){
       const data=JSON.parse(localStorage.getItem("user"))
+      const config={	
+        headers: {
+        'authorization': `Bearer ${data.token}`
+    }}
            const userid=data.id
-             const res=axios.get(`http://localhost:3700/api/user/${userid}`).then((res)=>{
+             const res=axios.get(`http://localhost:3700/api/user/${userid}`,config).then((res)=>{
                 setuser(res.data)
             })}
   }, [])
@@ -19,7 +23,7 @@ const Navbar = () => {
           
 const handleclick = () => {
   localStorage.removeItem('user')
-  window.location.href = '/login'
+  window.location.href = '/'
 }
 return(
   <nav className="bg-white border-gray-200 dark:bg-gray-900">

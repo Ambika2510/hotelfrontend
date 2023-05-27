@@ -12,14 +12,38 @@ const Adminscreen = () => {
     const [bookings,setbooking]=useState([]);
     const [hotels,sethotel]=useState([]);
     const [users,setuser]=useState([]);
+    if(!localStorage.getItem("user")){
+        window.location.href="/"
+    
+    }
+    else if(localStorage.getItem("user")){
+        const data=JSON.parse(localStorage.getItem("user"))
+        const id=data.id;
+        const config={	
+          headers: {
+          'authorization': `Bearer ${data.token}`
+      }}
+          const res=axios.get(`http://localhost:3700/api/user/${id}`,config).then((res)=>{
+              if(res.data.isadmin===false){
+                    localStorage.removeItem("user")
+                    window.location.href="/"
+              }  
+          });
+    }
     useEffect(()=>{
-axios.get("http://localhost:3700/api/getallbooking").then((res)=>{
+        const data=JSON.parse(localStorage.getItem("user"))
+        const id=data.id;
+        const config={	
+          headers: {
+          'authorization': `Bearer ${data.token}`
+      }}
+axios.get("http://localhost:3700/api/getallbooking",config).then((res)=>{
     setbooking(res.data);
 })
 axios.get("http://localhost:3700/api/getallrooms").then((res)=>{
     sethotel(res.data);
 })
-axios.get("http://localhost:3700/api/getalluser").then((res)=>{
+axios.get("http://localhost:3700/api/getalluser",config).then((res)=>{
     setuser(res.data);
 })
     },[])

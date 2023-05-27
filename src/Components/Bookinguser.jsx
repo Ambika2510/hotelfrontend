@@ -2,8 +2,17 @@ import React from 'react'
 import axios from 'axios'
 
 const Bookinguser = ({bookingid,hotel, fromdate,todate,amount,transactionid,status}) => {
+  if(!localStorage.getItem("user")){
+    window.location.href="/"
+  }
+
   const cancelbooking=async ()=>{
-    const res= await axios.patch("http://localhost:3700/api/updatebooking/"+bookingid);
+    const data=JSON.parse(localStorage.getItem("user"))
+    const config={	
+      headers: {
+      'authorization': `Bearer ${data.token}`
+  }}
+    const res= await axios.patch("http://localhost:3700/api/updatebooking/"+bookingid,config);
     window.location.reload();
   }
   return (

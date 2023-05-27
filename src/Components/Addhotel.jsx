@@ -4,8 +4,28 @@ import axios from 'axios'
 import {storage} from '../Firebase'
 import {ref,uploadBytes,getDownloadURL} from 'firebase/storage'
 import {v4} from "uuid"
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'  
 
 const Addhotel = () => {
+  if(!localStorage.getItem("user")){
+    window.location.href="/"
+
+}
+else if(localStorage.getItem("user")){
+    const data=JSON.parse(localStorage.getItem("user"))
+    const id=data.id;
+    const config={	
+      headers: {
+      'authorization': `Bearer ${data.token}`
+  }}
+      const res=axios.get(`http://localhost:3700/api/user/${id}`,config).then((res)=>{
+          if(res.data.isadmin===false){
+                localStorage.removeItem("user")
+                window.location.href="/"
+          }  
+      });
+}
     const [name,setname]=useState("");
     const[type,settype]=useState("");
     const[maxcount,setmaxcount]=useState("");
@@ -20,9 +40,10 @@ const Addhotel = () => {
  
         e.preventDefault();
         if(filename1===null||filename2===null||filename3===null){
-      
+          toast.error("image will not be uploaded",{position:"top-center",autoClose:8000})
           return}
         else{
+          toast.success("!!Wait...data will be uploaded",{position:"top-center",autoClose:40000})
           const imagerf1=ref(storage,`hotelimages/${filename1.name+v4()}`);
           const imagerf2=ref(storage,`hotelimages/${filename2.name+v4()}`);
           const imagerf3=ref(storage,`hotelimages/${filename3.name+v4()}`);
@@ -44,10 +65,16 @@ const Addhotel = () => {
                         url2,
                         url3
                       }
-                      axios.post("http://localhost:3700/api/createroom",data).then((res)=>{
+                      const datax=JSON.parse(localStorage.getItem("user"))
+                      const id=datax.id;
+                      const config={	
+                        headers: {
+                        'authorization': `Bearer ${data.token}`
+                    }}
+                      axios.post("http://localhost:3700/api/createroom",data,config).then((res)=>{
                         if(res.status===200){
-                          // toast.success("Sign in",{position:"top-center",autoClose:8000})
-                          // localStorage.setItem("user", JSON.stringify(res.data))
+            
+                          toast.success("data will be uploaded successfully",{position:"top-center",autoClose:5000})
                           setname("");
                           settype("");
                           setmaxcount("");
@@ -63,7 +90,8 @@ const Addhotel = () => {
                         }
                     })
                     .catch((err)=>{
-                        console.log(err.message)
+                      const error = err.response.data.error
+                      toast.error(error,{position:"top-center",autoClose:8000})
                  })
                    })
                    })
@@ -132,7 +160,8 @@ const Addhotel = () => {
 </form>
 
     </div>
-    </div></div>
+    </div>
+    <ToastContainer autoClose={40000}/></div>
   )
   }
 

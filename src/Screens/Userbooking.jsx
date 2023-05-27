@@ -7,9 +7,26 @@ import Bookinguser from '../Components/Bookinguser'
 const Userbooking = () => {
     const [bookings, setbookings] = useState([]);
     const id = useParams().id;
+if(!localStorage.getItem("user")){
+    window.location.href="/"
+
+}
+else if(localStorage.getItem("user")){
+  const data=JSON.parse(localStorage.getItem("user"))
+  if(data.id!==id){
+    localStorage.removeItem("user")
+    window.location.href="/"
+  }
+}
     useEffect(() => {
-        axios.get("http://localhost:3700/api/getroombyuser/"+id).then((res)=>{
-            console.log(res.data)
+      
+      const data=JSON.parse(localStorage.getItem("user"))
+      const config={	
+        headers: {
+        'authorization': `Bearer ${data.token}`
+    }}
+
+        axios.get("http://localhost:3700/api/getroombyuser/"+id,config).then((res)=>{
             setbookings(res.data)
         })
         .catch((err)=>{console.log(err.message)});

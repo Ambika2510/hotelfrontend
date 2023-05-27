@@ -4,12 +4,14 @@ import { useParams } from 'react-router-dom'
 import Navbar from '../Components/Navbar'
 import axios from 'axios';
 import DropIn from 'braintree-web-drop-in-react';
-// import StripeCheckout from 'react-stripe-checkout';
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 
 const Bookingscreen = () => {
   if(!localStorage.getItem("user")){
-    window.location.href="/login"
+    window.location.href="/"
   }
     const id = useParams().id;
     const data=JSON.parse(localStorage.getItem("user"))
@@ -53,15 +55,21 @@ setclientToken(res.data.clientToken)
               todate:todate,
               totalamount:hotel.rentperday*totaldays,
               totaldays:totaldays,
+              transactionid:clientToken,
               nonce
              
             } 
-          const res=await axios.post("http://localhost:3700/api/bookroom",bookingdata)
-        axios.patch(`http://localhost:3700/api/updateroom/${id}`).then((res)=>{
+            const config={	
+              headers: {
+              'authorization': `Bearer ${data.token}`
+          }}
+          const res=await axios.post("http://localhost:3700/api/bookroom",bookingdata,config)
+        axios.patch(`http://localhost:3700/api/updateroom/${id}`,config).then((res)=>{
           window.location.href="/"})
           }
           catch(err){
-            console.log(err);
+            const error = err.response.data.error
+             toast.error(error,{position:"top-center",autoClose:5000})
           }
        
     }
@@ -107,6 +115,7 @@ setclientToken(res.data.clientToken)
       </div>
     </div>
     </div>
+    <ToastContainer autoClose={40000}/>
     </div>
   )
 }
