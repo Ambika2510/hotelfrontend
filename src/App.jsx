@@ -7,6 +7,7 @@ import Login from './Screens/Login';
 import Profile from './Screens/Profile';
 import Userbooking from './Screens/Userbooking';
 import Adminscreen from './Screens/Adminscreen';
+import Landscreen from './Screens/Landscreen';
 function App() {
     let user=null;
     if(localStorage.getItem("user")){
@@ -16,7 +17,8 @@ function App() {
         <BrowserRouter>
         <div className="app">
        <Routes>
-       <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Landscreen/>} />
+       <Route path="/home" element={<Home/>} />
    <Route path="/bookingroom/:id/:fromdate/:todate" element={<Bookingscreen/>} />
    <Route path="/register"  element={!user? <Signup /> : <Navigate to="/" />}  />
    <Route path="/login" element={!user? <Login /> : <Navigate to="/" />}  />

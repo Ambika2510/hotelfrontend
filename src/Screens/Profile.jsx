@@ -7,14 +7,14 @@ const Profile = () => {
     const id = useParams().id;
     const [user, setuser] = useState([]);
     if(!localStorage.getItem("user")){
-      window.location.href="/"
+      window.location.href="/home"
   
   }
   else if(localStorage.getItem("user")){
     const data=JSON.parse(localStorage.getItem("user"))
     if(data.id!==id){
       localStorage.removeItem("user")
-      window.location.href="/"
+      window.location.href="/home"
     }
   }
     useEffect(() => {

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const Bookinguser = ({bookingid,hotel, fromdate,todate,amount,transactionid,status}) => {
   if(!localStorage.getItem("user")){
-    window.location.href="/"
+    window.location.href="/home"
   }
 
   const cancelbooking=async ()=>{

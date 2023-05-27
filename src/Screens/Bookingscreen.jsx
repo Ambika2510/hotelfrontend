@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 const Bookingscreen = () => {
   if(!localStorage.getItem("user")){
-    window.location.href="/"
+    window.location.href="/home"
   }
     const id = useParams().id;
     const data=JSON.parse(localStorage.getItem("user"))
@@ -65,7 +65,7 @@ setclientToken(res.data.clientToken)
           }}
           const res=await axios.post("http://localhost:3700/api/bookroom",bookingdata,config)
         axios.patch(`http://localhost:3700/api/updateroom/${id}`,config).then((res)=>{
-          window.location.href="/"})
+          window.location.href="/home"})
           }
           catch(err){
             const error = err.response.data.error

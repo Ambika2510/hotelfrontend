@@ -16,7 +16,7 @@ const Login = () => {
           localStorage.setItem("user", JSON.stringify(res.data))
             setEmail('')
             setPassword('')
-            window.location.href="/";
+            window.location.href="/home";
         })
         .catch(err => {  
           const error = err.response.data.error

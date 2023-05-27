@@ -13,7 +13,7 @@ const Adminscreen = () => {
     const [hotels,sethotel]=useState([]);
     const [users,setuser]=useState([]);
     if(!localStorage.getItem("user")){
-        window.location.href="/"
+        window.location.href="/home"
     
     }
     else if(localStorage.getItem("user")){
@@ -26,7 +26,7 @@ const Adminscreen = () => {
           const res=axios.get(`http://localhost:3700/api/user/${id}`,config).then((res)=>{
               if(res.data.isadmin===false){
                     localStorage.removeItem("user")
-                    window.location.href="/"
+                    window.location.href="/home"
               }  
           });
     }

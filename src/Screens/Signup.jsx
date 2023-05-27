@@ -19,7 +19,7 @@ const Signup = () => {
                  setName("");
                 setEmail("");
                 setPassword("");
-                window.location.href="/";
+                window.location.href="/home";
                 console.log("signup success")
               }
         })

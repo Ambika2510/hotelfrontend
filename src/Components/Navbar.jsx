@@ -23,12 +23,12 @@ const Navbar = () => {
           
 const handleclick = () => {
   localStorage.removeItem('user')
-  window.location.href = '/'
+  window.location.href = '/home'
 }
 return(
   <nav className="bg-white border-gray-200 dark:bg-gray-900">
   <div className="max-w-screen-full flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="/" className="flex items-center ">
+    <a href="/home" className="flex items-center ">
         <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Hotel booking</span>
     </a>
@@ -63,7 +63,7 @@ return(
 
 <nav className="bg-white border-gray-200 dark:bg-gray-900">
   <div className="max-w-screen-full flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="/" className="flex items-center ">
+    <a href="/home" className="flex items-center ">
         <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Hotel booking</span>
     </a>
