@@ -23,7 +23,7 @@ const Adminscreen = () => {
       },
     };
     const res = axios
-      .get(`http://localhost:3700/api/user/${id}`, config)
+      .get(`https://hotel-backend0987.onrender.com/api/user/${id}`, config)
       .then((res) => {
         if (res.data.isadmin === false) {
           localStorage.removeItem("user");
@@ -39,13 +39,13 @@ const Adminscreen = () => {
         authorization: `Bearer ${data.token}`,
       },
     };
-    axios.get("http://localhost:3700/api/getallbooking", config).then((res) => {
+    axios.get("https://hotel-backend0987.onrender.com/api/getallbooking", config).then((res) => {
       setbooking(res.data);
     });
-    axios.get("http://localhost:3700/api/getallrooms").then((res) => {
+    axios.get("https://hotel-backend0987.onrender.com/api/getallrooms").then((res) => {
       sethotel(res.data);
     });
-    axios.get("http://localhost:3700/api/getalluser", config).then((res) => {
+    axios.get("https://hotel-backend0987.onrender.com/api/getalluser", config).then((res) => {
       setuser(res.data);
     });
   }, []);

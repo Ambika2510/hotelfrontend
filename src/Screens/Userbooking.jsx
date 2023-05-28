@@ -26,7 +26,7 @@ else if(localStorage.getItem("user")){
         'authorization': `Bearer ${data.token}`
     }}
 
-        axios.get("http://localhost:3700/api/getroombyuser/"+id,config).then((res)=>{
+        axios.get("https://hotel-backend0987.onrender.com/api/getroombyuser/"+id,config).then((res)=>{
             setbookings(res.data)
         })
         .catch((err)=>{console.log(err.message)});

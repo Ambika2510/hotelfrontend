@@ -11,7 +11,7 @@ const Signup = () => {
     e.preventDefault()
     const signup = { name,email, password };
    
-    axios.post('http://localhost:3700/api/signup', signup)
+    axios.post('https://hotel-backend0987.onrender.com/api/signup', signup)
         .then((res )=> {
             if(res.status===200){
               toast.success("!!Wait...Signup under process",{position:"top-center",autoClose:10000})

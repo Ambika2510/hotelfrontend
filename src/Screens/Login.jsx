@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault()
     const signup = { email, password };
     toast.success("!!Wait...login under process",{position:"top-center",autoClose:9000})
-    axios.post('http://localhost:3700/api/login', signup)
+    axios.post('https://hotel-backend0987.onrender.com/api/login', signup)
         .then(res => {
           localStorage.setItem("user", JSON.stringify(res.data))
             setEmail('')

@@ -25,7 +25,7 @@ const Bookingscreen = () => {
     // const [loading, setloading] = useState(false);
     const [hotel, sethotel] = useState({});
     useEffect(() => {
-        axios.get(`http://localhost:3700/api/getroomdetail/${id}`)
+        axios.get(`https://hotel-backend0987.onrender.com/api/getroomdetail/${id}`)
         .then((res)=>{
             sethotel(res.data)
         });
@@ -36,7 +36,7 @@ const Bookingscreen = () => {
  
       const gettoken=async()=>{
         try{
-const res=await axios.get("http://localhost:3700/api/gettoken")
+const res=await axios.get("https://hotel-backend0987.onrender.com/api/gettoken")
 console.log(res.data.token)
 setclientToken(res.data.clientToken)
         }
@@ -64,8 +64,8 @@ setclientToken(res.data.clientToken)
               'authorization': `Bearer ${data.token}`
           }}
           const fcc={fcc:"fcc"}
-          const res=await axios.post("http://localhost:3700/api/bookroom",bookingdata,config)
-        axios.patch(`http://localhost:3700/api/updateroom/${id}`,fcc,config).then((res)=>{
+          const res=await axios.post("https://hotel-backend0987.onrender.com/api/bookroom",bookingdata,config)
+        axios.patch(`https://hotel-backend0987.onrender.com/api/updateroom/${id}`,fcc,config).then((res)=>{
           window.location.href="/home"})
           }
           catch(err){

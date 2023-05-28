@@ -13,7 +13,7 @@ const HomeScreen = () => {
     const [search, setsearch] = useState('');
     const [type, settype] = useState('all');
     useEffect(() => {
-      axios.get("http://localhost:3700/api/getallrooms")
+      axios.get("https://hotel-backend0987.onrender.com/api/getallrooms")
       .then((res)=>{
         
         sethotels(res.data)

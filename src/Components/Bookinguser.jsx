@@ -14,7 +14,7 @@ const Bookinguser = ({bookingid,hotel, fromdate,todate,amount,transactionid,stat
   }}
   const fcc={fcc:"true"}
      
-    const res= await axios.patch("http://localhost:3700/api/updatebooking/"+bookingid,fcc,config);
+    const res= await axios.patch("https://hotel-backend0987.onrender.com/api/updatebooking/"+bookingid,fcc,config);
     window.location.reload();
   }
   return (

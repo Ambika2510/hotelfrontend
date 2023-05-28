@@ -13,7 +13,7 @@ const Navbar = () => {
         'authorization': `Bearer ${data.token}`
     }}
            const userid=data.id
-             const res=axios.get(`http://localhost:3700/api/user/${userid}`,config).then((res)=>{
+             const res=axios.get(`https://hotel-backend0987.onrender.com/api/user/${userid}`,config).then((res)=>{
                 setuser(res.data)
             })}
   }, [])

@@ -19,7 +19,7 @@ else if(localStorage.getItem("user")){
       headers: {
       'authorization': `Bearer ${data.token}`
   }}
-      const res=axios.get(`http://localhost:3700/api/user/${id}`,config).then((res)=>{
+      const res=axios.get(`https://hotel-backend0987.onrender.com/api/user/${id}`,config).then((res)=>{
           if(res.data.isadmin===false){
                 localStorage.removeItem("user")
                 window.location.href="/home"
@@ -69,9 +69,9 @@ else if(localStorage.getItem("user")){
                       const id=datax.id;
                       const config={	
                         headers: {
-                        'authorization': `Bearer ${data.token}`
+                        'authorization': `Bearer ${datax.token}`
                     }}
-                      axios.post("http://localhost:3700/api/createroom",data,config).then((res)=>{
+                      axios.post("https://hotel-backend0987.onrender.com/api/createroom",data,config).then((res)=>{
                         if(res.status===200){
             
                           toast.success("data will be uploaded successfully",{position:"top-center",autoClose:5000})

@@ -23,7 +23,7 @@ const Profile = () => {
         headers: {
         'authorization': `Bearer ${data.token}`
     }}
-        const res=axios.get(`http://localhost:3700/api/user/${id}`,config).then((res)=>{
+        const res=axios.get(`https://hotel-backend0987.onrender.com/api/user/${id}`,config).then((res)=>{
             setuser(res.data)
         });
     }, [])
