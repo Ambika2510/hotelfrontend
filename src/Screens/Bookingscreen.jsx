@@ -89,7 +89,7 @@ setclientToken(res.data.clientToken)
     <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Name:{hotel.maxcount}</h2>
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">From:{fromdate}</h2>
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">To:{todate}</h2>
-        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">MAX COUNT:{hotel.maxcount}</h2>
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Number of room available:{hotel.maxcount}</h2>
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Total days:{totaldays}</h2>
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Rent per day:{" "+hotel.rentperday+" "+"Rs"}</h2>
         <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Total Amount:{" "+hotel.rentperday*totaldays+" "+"Rs"}</h2>
