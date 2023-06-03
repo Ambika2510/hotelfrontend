@@ -56,8 +56,9 @@ const HomeScreen = () => {
   return (
     <div>
       <Navbar/>
-      <div className='  flex justify-center m-3 p-2'>
-<div className=' flex justify-center border-2 border-solid border-black   '>  <RangePicker format='DD-MM-YYYY' className='p-2'  onChange={filterbydate} /></div>
+      <div className='sm:flex justify-center m-3 p-2'>
+<div className=' flex justify-center sm:border-2 border-solid border-black   '>  <RangePicker format='DD-MM-YYYY' className='p-2'  onChange={filterbydate} /></div>
+<div className='flex justify-center max-sm:mt-2 '>
 <div>
             <input type="text" id="first_name" className="bg-gray-50 mx-4 border-2 border-solid border-black  text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search hotels" value={search} onChange={(e)=>{setsearch(e.target.value)}} onKeyUp={filterBysearch} required/>
         </div>
@@ -69,6 +70,7 @@ const HomeScreen = () => {
             <option value="non-delux">Non-Delux</option>
           </select>
         </div>
+</div>
     </div>
 <div className="">
   {hotels.length>0?<div className='flex justify-center'><div className='m-3 '>{hotels.map((hotel)=> (<Front key={hotel._id} hotel={hotel} fromdate={fromdate} todate={todate}/>))}</div></div>:<h1 className="m-6 text-center text-lg font-semibold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">!!Sorry No More Hotels Available...</h1>}

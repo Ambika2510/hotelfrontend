@@ -19,7 +19,7 @@ const Bookinguser = ({bookingid,hotel, fromdate,todate,amount,transactionid,stat
   }
   return (
     
-    <div className="m-1  flex  justify-between  min-w-full p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="m-1  md:flex  justify-between  min-w-full p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 <div>
 <h1 className="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Name:   {hotel}</h1>
     <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-black">Transaction Id:{" "+transactionid}</h2>
