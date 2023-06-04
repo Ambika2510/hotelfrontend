@@ -9,6 +9,7 @@ import Userbooking from './Screens/Userbooking';
 import Adminscreen from './Screens/Adminscreen';
 import Landscreen from './Screens/Landscreen';
 import Updatepassword from './Screens/Updatepassword';
+
 function App() {
     let user=null;
     if(localStorage.getItem("user")){
@@ -28,6 +29,7 @@ function App() {
    <Route path='/admin' element={user?<Adminscreen/>:<Navigate to="/"/>}/>
    <Route path="/updatepassword/:uid" element={<Updatepassword/>}/>
          </Routes>
+    
         </div>
         </BrowserRouter>
     );
