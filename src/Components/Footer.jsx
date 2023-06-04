@@ -12,7 +12,8 @@ const Footer = () => {
             
        
         <hr className="my-6 border-gray-200 lg:mx-auto dark:border-gray-700 lg:my-8" />
-        <div className="flex justify-center text-xl font-medium text-slate-100">© 2023 <a href="/home" className="hover:underline">Hotel Booking</a>.ALL Right Reserved</div>
+        <p className=" text-center   text-slate-100 text-xl font-medium">© 2023 <a href="/home" className="hover:underline">Hotel Booking</a>.ALL Right Reserved </p>
+
     </div>
 </footer>
 
