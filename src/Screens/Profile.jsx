@@ -54,7 +54,7 @@ const Profile = () => {
             const datar={
               url
             }
-           axios.patch("http://localhost:3700/api/updateprofilepic/"+id,datar,config).then((res)=>{
+           axios.patch("https://hotel-backend0987.onrender.com/api/updateprofilepic/"+id,datar,config).then((res)=>{
               if(res.status===200){
                 setfilename(null);
                 inputref.current.value = null;
