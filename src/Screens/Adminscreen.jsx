@@ -171,6 +171,7 @@ const Adminscreen = () => {
                     <User
                       key={user._id}
                       userid={user._id}
+                      url={user.profileimage}
                       name={user.name}
                       email={user.email}
                       admin={user.isadmin}
