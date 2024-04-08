@@ -88,7 +88,7 @@ return(
   <div className="max-w-screen-full flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="/home" className="flex items-center ">
         <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
-        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Hotel booking</span>
+        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Hotel Recommendation</span>
     </a>
     <button onClick={()=>{setd(1-d)}}  type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
       <span className="sr-only">Open main menu</span>
